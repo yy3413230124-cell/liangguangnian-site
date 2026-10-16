@@ -22,6 +22,43 @@
 <link rel="canonical" href="https://yy3413230124-cell.github.io/liangguangnian-site/">
 <link rel="preload" href="assets/fonts/dingding-subset.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" type="image/png" href="assets/img/logo-64.png">
+<!-- 结构化数据：明确告诉搜索引擎「两光年AI」是一个品牌实体、这个页面是它的课程。
+     品牌词（生造词）的搜索靠这个最容易命中——引擎能建立「两光年 = 这个组织」的认知。 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://yy3413230124-cell.github.io/liangguangnian-site/#organization",
+      "name": "两光年AI",
+      "alternateName": ["两光年", "两光年AI产品经理"],
+      "url": "https://yy3413230124-cell.github.io/liangguangnian-site/",
+      "logo": "https://yy3413230124-cell.github.io/liangguangnian-site/assets/img/logo-original.jpg",
+      "description": "两光年AI：把 AI 产品经理这条路系统化。9 个阶段、32 个模块、108 课时，从职业规划、算法认知、项目交付到简历与面试陪跑。"
+    },
+    {
+      "@type": "Course",
+      "@id": "https://yy3413230124-cell.github.io/liangguangnian-site/#course",
+      "name": "AI 产品经理系统课",
+      "alternateName": "两光年AI 产品经理特训班",
+      "description": "从职业规划、算法认知、项目交付到简历与面试陪跑，一条有先后依赖的链路。覆盖大模型、RAG、Agent，以企业级项目实操带教。",
+      "url": "https://yy3413230124-cell.github.io/liangguangnian-site/",
+      "inLanguage": "zh-CN",
+      "provider": { "@id": "https://yy3413230124-cell.github.io/liangguangnian-site/#organization" },
+      "teaches": ["AI 产品经理", "大模型产品设计", "RAG", "Agent", "PRD 撰写", "AI 产品面试"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://yy3413230124-cell.github.io/liangguangnian-site/#website",
+      "url": "https://yy3413230124-cell.github.io/liangguangnian-site/",
+      "name": "两光年AI · AI产品经理系统课",
+      "inLanguage": "zh-CN",
+      "publisher": { "@id": "https://yy3413230124-cell.github.io/liangguangnian-site/#organization" }
+    }
+  ]
+}
+</script>
 <style>
 /* ============================================================
    设计语言来源：datawhale.cn/home 计算样式与部署源码实测
