@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>页面不存在 · 两光年AI</title>
+<meta name="robots" content="noindex">
+<style>
+  *{box-sizing:border-box}
+  body{
+    margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+    background:#fff;color:#111;padding:32px;
+    font-family:"Alibaba PuHuiTi","PingFang SC",HarmonyOS_Sans_SC,MiSans,"Microsoft YaHei",sans-serif;
+  }
+  .box{max-width:520px;text-align:center}
+  .code{
+    font-size:96px;line-height:1;font-weight:700;letter-spacing:.02em;
+    background-image:radial-gradient(circle at center,#111 1.5px,transparent 1.7px);
+    background-size:5px 5px;-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  h1{margin:22px 0 0;font-size:22px;font-weight:600}
+  p{margin:14px 0 0;font-size:14px;line-height:1.9;color:#666}
+  .btns{margin-top:28px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  a{
+    display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 22px;
+    font-size:15px;text-decoration:none;color:#fff;
+    background:linear-gradient(180deg,#38c6ff,#1aa9ef);
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,.55),0 3px 0 rgba(9,84,124,.28)
+  }
+  a.ghost{background:#fff;color:#111;box-shadow:inset 0 0 0 2px #24bdff,0 3px 0 rgba(9,84,124,.16)}
+  .brand{margin-top:34px;font-size:12px;color:#898989;letter-spacing:.08em}
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="code">404</div>
+    <h1>这个页面不存在</h1>
+    <p>链接可能已经失效，或者地址输错了。<br>回首页看看课程体系、项目实战和学员反馈。</p>
+    <div class="btns">
+      <a id="home-link" href="/">回首页</a>
+      <a id="outline-link" class="ghost" href="/#curriculum">看课程大纲</a>
+    </div>
+    <p class="brand">两光年AI · 懂 AI，更懂产品</p>
+  </div>
+  <script>
+  // 404.html 会在任意路径下被服务，所以「回首页」不能用写死的 "/"：
+  //   · GitHub Pages 项目站是 /<仓库名>/xxx → 站点根是 /<仓库名>/
+  //   · 绑了自有域名或放在根目录（如阿里云）→ 站点根就是 /
+  // 这里按主机名判断，两种部署都不用改代码。
+  (function () {
+    var segs = location.pathname.split("/").filter(Boolean);
+    var root = "/";
+    if (/\.github\.io$/i.test(location.hostname) && segs.length) {
+      root = "/" + segs[0] + "/";
+    }
+    var home = document.getElementById("home-link");
+    var outline = document.getElementById("outline-link");
+    if (home) home.href = root;
+    if (outline) outline.href = root + "#curriculum";
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>加微信咨询 · 两光年AI | 先做一次职业规划，再决定学什么</title>
+<meta name="description" content="两光年AI 微信咨询：扫码添加并备注「AI」，我们会先了解你的履历、教育背景和目标岗位，再判断这条路径怎么走最短。可领取 AI 产品资料与试看课。">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/img/logo-64.png">
+<link rel="preload" href="assets/fonts/dingding-subset.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{
+  font-family:"dingding";
+  src:url("assets/fonts/dingding-subset.woff2") format("woff2");
+  font-weight:400;font-style:normal;font-display:swap;
+}
+:root{
+  --ink:#111;--ink-heading:#333;--ink-muted:#666;--ink-info:#888;--ink-label:#747f7f;
+  --accent:#24bdff;--accent-deep:#23beff;--accent-soft:#56d4fb;--accent-wash:#d7f3ff;--accent-wash-2:#eff9fc;
+  --surface:#fff;--chip:#dedede;--rule:#898989;--border:#dadce0;--border-2:#dedede;
+  --btn-bg:#e9f8ff;--btn-border:#d9f4ff;--btn-hover:#c3ecff;
+  --footer:#1b1e32;--footer-text:#e9e9e9;
+  --r-card:12px;--r-event:16px;--r-pill:20px;--r-sm:2px;
+  --shadow-card:0 0 10px rgba(16,121,173,.24);
+  --container:1200px;
+  --font-display:"dingding","Alibaba PuHuiTi","PingFang SC",HarmonyOS_Sans_SC,MiSans,"Microsoft YaHei",sans-serif;
+  --font-body:"Alibaba PuHuiTi","PingFang SC",HarmonyOS_Sans_SC,MiSans,"Microsoft YaHei","Source Han Sans SC",sans-serif;
+  --font-heading:-apple-system,BlinkMacSystemFont,"PingFang SC","HarmonyOS Sans SC","MiSans","Microsoft YaHei","Source Han Sans SC","Helvetica Neue",Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--surface);color:var(--ink);font-family:var(--font-body);
+  font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4,p{margin:0}
+/* 显示字族只有 400 一个字重，标题默认 bold 会触发伪粗体、笔画发糊 */
+h1,h2,h3,h4,h5,h6,summary{font-weight:400}
+.container{width:var(--container);max-width:calc(100% - 40px);margin:0 auto}
+
+/* 顶栏 */
+.header{position:fixed;top:0;left:0;right:0;z-index:1000;height:60px;padding:0 30px;
+  background:#fff;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:9px;height:60px}
+.logo-mark{width:32px;height:32px;display:block;border-radius:9px}
+.logo-text{font-family:var(--font-display);font-size:21px;letter-spacing:.02em}
+.header .right{display:flex;align-items:center;gap:14px}
+.link-plain{font-size:14px;color:var(--ink-muted);transition:color .2s}
+.link-plain:hover{color:var(--accent)}
+.btn-pill{display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 18px;
+  border-radius:var(--r-pill);background:var(--btn-bg);border:1px solid var(--btn-border);
+  font-family:var(--font-display);font-size:14px;color:#303133;transition:background .3s}
+.btn-pill:hover{background:var(--btn-hover)}
+.btn-pixel{position:relative;display:inline-flex;align-items:center;justify-content:center;
+  height:40px;padding:0 22px;font-family:var(--font-display);font-size:16px;color:#fff;
+  background:linear-gradient(180deg,#38c6ff,#1aa9ef);
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.55),inset 0 0 0 4px rgba(255,255,255,.22),0 3px 0 rgba(9,84,124,.28);
+  transition:transform .2s}
+.btn-pixel::before{content:"";position:absolute;top:-4px;left:-4px;width:5px;height:5px;background:rgba(255,255,255,.7)}
+.btn-pixel::after{content:"";position:absolute;bottom:-4px;right:-4px;width:5px;height:5px;background:rgba(9,84,124,.25)}
+.btn-pixel:hover{transform:translateY(-4px)}
+.btn-pixel.ghost{background:#fff;color:var(--ink);
+  box-shadow:inset 0 0 0 2px var(--accent),inset 0 0 0 4px #eaf8ff,0 3px 0 rgba(9,84,124,.16)}
+.btn-pixel.ghost::before{background:var(--accent)}
+.btn-pixel.ghost::after{background:rgba(36,189,255,.25)}
+
+/* 主体 */
+.hero{margin-top:60px;background:
+  radial-gradient(900px 420px at 88% 8%,#eaf8ff 0%,rgba(234,248,255,0) 62%),
+  radial-gradient(700px 380px at 4% 92%,#f4fbff 0%,rgba(244,251,255,0) 60%)}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:64px 0 72px}
+.eyebrow{font-family:var(--font-display);font-size:14px;letter-spacing:.16em;color:var(--accent);text-transform:uppercase}
+.hero h1{margin-top:16px;font-family:var(--font-heading);font-weight:600;font-size:38px;line-height:1.4}
+.hero-note{margin-top:20px;font-size:15px;line-height:2;color:var(--ink-heading);max-width:560px}
+.hero-note b{color:var(--ink)}
+.note-badge{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:9px 16px;
+  background:#fff5f5;border:1px solid #ffd9d9;border-radius:var(--r-sm);
+  font-family:var(--font-display);font-size:15px;color:#d03f3f}
+.note-badge b{font-size:17px;font-weight:400}
+.send-list{margin-top:28px;padding-top:24px;border-top:1px dashed #cbe8f6;max-width:520px}
+.send-list p{font-family:var(--font-display);font-size:14px;color:var(--ink)}
+.send-list ul{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:11px}
+.send-list li{position:relative;padding-left:24px;font-size:13px;line-height:1.7;color:var(--ink-muted)}
+.send-list li::before{content:"";position:absolute;left:4px;top:7px;width:7px;height:7px;
+  background:var(--accent);border-radius:1px}
+
+/* 二维码卡 */
+.qr-card{background:#fff;border:1px solid var(--border);border-radius:var(--r-event);
+  box-shadow:var(--shadow-card);padding:22px;max-width:400px;margin-left:auto}
+.qr-card .qr-head{display:flex;align-items:center;gap:10px;padding-bottom:16px;border-bottom:1px solid #eef2f5}
+.qr-card .qr-head .dot{width:10px;height:10px;border-radius:50%;background:#3ec46d;box-shadow:0 0 0 4px rgba(62,196,109,.18)}
+.qr-card .qr-head p{font-family:var(--font-display);font-size:17px}
+.qr-card .qr-head span{margin-left:auto;font-size:12px;color:var(--ink-info)}
+.qr-card img{margin:18px auto 0;width:100%;max-width:320px;height:auto;border-radius:var(--r-card)}
+/* 手机端专用的首屏二维码块：桌面端 display:none，不占布局，桌面端像素不受影响。 */
+.hero-qr-mobile{display:none}
+.qr-card .qr-tip{margin-top:16px;font-size:13px;line-height:1.8;color:var(--ink-muted);text-align:center}
+.qr-card .qr-tip b{color:#d03f3f}
+
+/* 步骤 */
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:8px;
+  padding:34px 0;border-top:1px solid #eef2f5;border-bottom:1px solid #eef2f5}
+.s3{display:flex;gap:14px}
+.s3 i{flex:0 0 26px;height:26px;display:flex;align-items:center;justify-content:center;
+  background:var(--accent);color:#fff;font-style:normal;font-family:var(--font-display);
+  font-size:13px;border-radius:var(--r-sm)}
+.s3 h3{font-family:var(--font-heading);font-weight:600;font-size:16px;line-height:1.5}
+.s3 p{margin-top:6px;font-size:13px;line-height:1.75;color:var(--ink-muted)}
+
+.section{margin-top:82px}
+.sec-title{display:flex;flex-direction:column;align-items:center;gap:6px}
+.sec-title .head{font-family:var(--font-display);font-size:10px;letter-spacing:.18em;color:var(--ink-label);text-transform:uppercase}
+.sec-title .body{display:flex;align-items:center;justify-content:center;gap:5px}
+.sec-title .stick{width:24px;height:4px;background:var(--rule)}
+.sec-title .title{padding:5px 15px;background:var(--chip);font-family:var(--font-display);font-size:32px;line-height:1.4}
+
+.gains{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+.gain{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);padding:28px 24px;transition:transform .4s,box-shadow .4s}
+.gain:hover{transform:translateY(-4px);box-shadow:var(--shadow-card)}
+.gain .g-tag{font-family:var(--font-display);font-size:10px;letter-spacing:.16em;color:var(--accent);text-transform:uppercase}
+.gain h3{margin-top:10px;font-family:var(--font-heading);font-weight:600;font-size:19px;line-height:1.5}
+.gain p{margin-top:12px;font-size:13px;line-height:1.85;color:var(--ink-muted)}
+
+.faq{margin-top:40px;border-top:1px solid #eef2f5}
+.faq details{border-bottom:1px solid #eef2f5}
+.faq summary{cursor:pointer;padding:20px 4px;font-family:var(--font-heading);font-weight:600;font-size:16px;
+  list-style:none;display:flex;align-items:center;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"Q";flex:0 0 22px;height:22px;display:flex;align-items:center;justify-content:center;
+  background:var(--accent-wash-2);color:var(--accent-deep);font-size:12px;border-radius:var(--r-sm);border:1px solid #d9f4ff}
+.faq details[open] summary{color:var(--accent-deep)}
+.faq .a{padding:0 4px 22px 38px;font-size:14px;line-height:1.9;color:var(--ink-muted)}
+
+/* 页脚 */
+.footer{background:var(--footer);padding:34px 53px;display:flex;justify-content:space-between;
+  align-items:flex-start;gap:40px;flex-wrap:wrap;margin-top:96px}
+.footer .f-logo{width:66px;height:66px;display:block;margin-bottom:16px;border-radius:16px}
+.footer .f-brand{font-family:var(--font-heading);font-weight:700;font-size:36px;color:#fff;line-height:1.2}
+.footer .f-slogan{margin-top:10px;font-size:12px;color:var(--footer-text);letter-spacing:.06em}
+.footer .f-info{display:flex;align-items:flex-start;flex-wrap:wrap}
+.footer .info-list{display:flex;flex-direction:column;margin-right:120px}
+.footer .info-list:last-child{margin-right:0}
+.footer .info-list span,.footer .info-list a{font-size:12px;color:var(--footer-text);margin-top:10px}
+.footer .info-list span:first-child,.footer .info-list a:first-child{font-size:16px;font-weight:700;color:#fff;margin-top:20px}
+.footer .info-list a:hover{text-decoration:underline}
+.admin-footer{background:var(--footer);height:68px;display:flex;align-items:center;justify-content:center}
+.admin-footer .content{font-size:12px;color:#fff;text-align:center;line-height:1.7}
+
+/* 断点与首页保持一致（946）：否则嵌入飞书云文档（iframe ~1000px）时会掉进单栏版式，
+   和直接打开的双栏版式不一样。 */
+@container (max-width:946px){
+  .hero-inner{grid-template-columns:1fr;gap:40px;padding:44px 0 56px}
+  .qr-card{margin:0 auto}
+  .steps3{grid-template-columns:1fr;gap:18px}
+  .gains{grid-template-columns:1fr 1fr}
+  .footer .info-list{margin-right:56px}
+}
+@container (max-width:720px){
+  /* ---------- 首屏：把二维码提到第一屏 ----------
+     原来二维码卡在第一屏之下，而这个页面唯一的目的就是加微信。
+     手机端改为「精简文案 + 紧凑二维码块」，大二维码卡移到下方。 */
+  .hero-inner{padding:26px 0 40px;gap:22px}
+  .hero h1{font-size:27px;margin-top:10px}
+  .hero-note{font-size:14px;line-height:1.85;margin-top:14px}
+  .hero-note .note-more{display:none}
+  .note-badge{margin-top:14px;font-size:14px;padding:8px 13px}
+  .hero-qr-mobile{
+    display:flex;align-items:center;gap:14px;width:100%;margin-top:16px;
+    padding:12px 14px;background:#fff;border:1px solid var(--border);
+    border-radius:var(--r-card);box-shadow:var(--shadow-card);text-decoration:none
+  }
+  .hero-qr-mobile img{width:108px;height:108px;flex:0 0 108px;border-radius:8px;display:block}
+  .hero-qr-mobile .hqm-txt{display:block;min-width:0}
+  .hero-qr-mobile strong{display:block;font-family:var(--font-heading);font-weight:600;font-size:15px;line-height:1.4;color:var(--ink)}
+  .hero-qr-mobile .hqm-txt > span{display:block;margin-top:6px;font-size:12px;line-height:1.65;color:var(--ink-muted)}
+  .hero-qr-mobile b{color:#d03f3f}
+  /* 手机端用紧凑二维码块代替大二维码卡，避免同一页面出现两个二维码 */
+  .qr-card{display:none}
+
+  /* ---------- 「能拿到什么」卡片：横向滚动 ----------
+     3 张卡竖排约 700px；改成一排、卡片 84% 宽露出下一张。 */
+  .gains{
+    display:flex;grid-template-columns:none;gap:14px;
+    overflow-x:auto;overscroll-behavior-x:contain;
+    scroll-snap-type:x mandatory;scroll-behavior:smooth;
+    padding:2px 2px 14px;margin:0 -2px;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none
+  }
+  .gains::-webkit-scrollbar{display:none}
+  .gain{flex:0 0 84%;scroll-snap-align:start}
+  .gain:hover{transform:none}
+
+  .steps3{padding:26px 0}
+  .sec-title .title{font-size:24px}
+  .link-plain{display:none}
+  .footer{padding:26px 24px}
+}
+
+/* ---------- 布局容器 ----------
+   断点改用「容器宽度」判断（@container），而不是视口宽度。
+   这样嵌入 iframe 时——只要把版式宽度补到 1240——命中的规则就和直接打开完全一样。
+   顶栏单独作为容器；它与悬浮按钮都是 fixed，必须留在 .page 之外。 */
+.header{container-type:inline-size}
+.page{container-type:inline-size}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a class="logo" href="index.html">
+    <img class="logo-mark" src="assets/img/logo-original.jpg" alt="两光年AI" width="480" height="480">
+    <span class="logo-text">两光年AI</span>
+  </a>
+  <div class="right">
+    <a class="link-plain" href="index.html">返回官网首页</a>
+    <a class="btn-pill" href="index.html#curriculum">先看课程大纲</a>
+  </div>
+</header>
+
+<div class="page">
+
+<main>
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <p class="eyebrow">Add WeChat · 私域咨询</p>
+        <h1>加个微信，<br>先做一次职业规划</h1>
+        <p class="hero-note">
+          把你的履历、教育背景、目标岗位和时间预算说清楚<span class="note-more">，我们会告诉你：这条路径大概要多久、你现在最该补的是哪一段、哪些课你可能不需要上</span>。
+          <b>如果判断下来不适合，我们会直接说。</b>
+        </p>
+        <p class="note-badge">记得备注 <b>AI</b>，优先通过</p>
+        <div class="hero-qr-mobile">
+          <img src="assets/img/wechat-qrcode.png" alt="两光年AI 微信二维码，扫码添加并备注 AI" width="500" height="500">
+          <span class="hqm-txt">
+            <strong>扫码加微信</strong>
+            <span>长按二维码保存，微信「扫一扫 → 相册」识别<br>在打招呼栏备注 <b>AI</b>，我会马上回复</span>
+          </span>
+        </div>
+        <div class="send-list">
+          <p>加上之后，发这四句就行：</p>
+          <ul>
+            <li>现在的岗位与主要职责（以及做过的最完整的一个项目）</li>
+            <li>教育背景：专业、学历，有没有算法或数据相关基础</li>
+            <li>目标岗位方向（AI 产品 / 大模型产品 / 其他）</li>
+            <li>能投入的时间：每周几小时、大概几个月</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="qr-card">
+        <div class="qr-head">
+          <span class="dot" aria-hidden="true"></span>
+          <p>扫码添加微信</p>
+          <span>备注：AI</span>
+        </div>
+        <img src="assets/img/wechat-qrcode.png" alt="两光年AI 微信二维码，扫码添加并备注 AI" width="500" height="500">
+        <p class="qr-tip">用微信扫一扫，或长按图片识别二维码<br><b>在打招呼栏备注 AI，我会马上回复</b></p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="steps3">
+        <div class="s3"><i>1</i><div><h3>扫码添加微信</h3><p>用微信扫一扫或长按识别上方二维码。</p></div></div>
+        <div class="s3"><i>2</i><div><h3>发送备注「AI」</h3><p>不备注的话，消息容易被漏掉。</p></div></div>
+        <div class="s3"><i>3</i><div><h3>说明你的情况</h3><p>现在的岗位、教育背景、目标方向和能投入的时间。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section">
+    <div class="sec-title">
+      <p class="head">What You Get</p>
+      <div class="body"><i class="stick"></i><h2 class="title">加微信能拿到什么</h2><i class="stick"></i></div>
+    </div>
+    <div class="gains">
+      <article class="gain">
+        <p class="g-tag">01 / Free</p>
+        <h3>AI 产品资料 &amp; 试看课</h3>
+        <p>两个开源知识库的整理版资料入口，加上课程试看，先看看内容是不是你要的，再决定要不要投入。</p>
+      </article>
+      <article class="gain">
+        <p class="g-tag">02 / Plan</p>
+        <h3>一次针对性的路径判断</h3>
+        <p>不是一套通用话术。有算法背景的，传统人工智能那一块可以快速过；做 B 端产品出身的，原型和需求管理可以压缩。</p>
+      </article>
+      <article class="gain">
+        <p class="g-tag">03 / Honest</p>
+        <h3>不适合我们也会直接说</h3>
+        <p>只想拿资料、暂时不打算投入学习时间的，或者目标不是 AI 产品岗的，我们会直接告诉你不用报课。</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="container section">
+    <div class="sec-title">
+      <p class="head">FAQ</p>
+      <div class="body"><i class="stick"></i><h2 class="title">加微信前你想问</h2><i class="stick"></i></div>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>为什么要先加微信，不能直接买课吗？</summary>
+        <p class="a">因为第一步不是买课，是规划。同样的课程，零基础和从产品岗转过来的走法不一样。先聊清楚你的履历和目标，我们才能告诉你哪些课你可能不需要上。</p>
+      </details>
+      <details>
+        <summary>加了好友会不会被频繁骚扰？</summary>
+        <p class="a">不会。加上之后先做一次路径沟通，你的资料和试看课我们直接发给你。后续是否继续，由你决定。</p>
+      </details>
+      <details>
+        <summary>完全没有算法基础，能转 AI 产品岗吗？</summary>
+        <p class="a">可以，但要补的是「技术能力边界」而不是写代码。阶段 2 传统人工智能讲的就是这个：让你在需求评审上能判断方案做不做得成，而不是被一句「做不了」堵回来。</p>
+      </details>
+      <details>
+        <summary>整个流程大概要多久？</summary>
+        <p class="a">进阶班按 2 个月节奏推进，共 9 个阶段、32 个模块、108 课时、8 个项目，每周一次复盘。实际周期取决于你能投入的时间。</p>
+      </details>
+      <details>
+        <summary>能保证拿到 offer 吗？</summary>
+        <p class="a">不能，我们也不承诺任何薪资数字。能承诺的是：走完这套流程，你手上会多出几个能写进简历、能在面试里被追问三层还站得住的真实项目。转行结果取决于个人背景、投入时间和当时的市场环境。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="container section" style="text-align:center">
+    <div class="sec-title">
+      <p class="head">Ready</p>
+      <div class="body"><i class="stick"></i><h2 class="title">扫码并备注 AI</h2><i class="stick"></i></div>
+    </div>
+    <p style="margin-top:16px;font-size:15px;line-height:1.9;color:var(--ink-muted);max-width:640px;margin-left:auto;margin-right:auto">
+      想聊的同学，把这句发给我们就行：现在的岗位 + 教育背景 + 目标方向 + 每周能投入几小时。
+    </p>
+    <div style="margin-top:30px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a class="btn-pixel" href="assets/img/wechat-qrcode.png" target="_blank" rel="noopener">放大二维码</a>
+      <a class="btn-pixel ghost" href="index.html">返回官网首页</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div>
+    <img class="f-logo" src="assets/img/logo-original.jpg" alt="两光年AI" width="480" height="480">
+    <p class="f-brand">两光年AI</p>
+    <p class="f-slogan">懂 AI，更懂产品</p>
+  </div>
+  <div class="f-info">
+    <div class="info-list">
+      <span>关于我们</span>
+      <a href="index.html">我们是谁</a>
+      <a href="index.html#curriculum">课程体系</a>
+      <a href="index.html#project">项目实战</a>
+      <a href="index.html#story">学员反馈</a>
+    </div>
+    <div class="info-list">
+      <span>联系我们</span>
+      <a href="wechat.html">微信：扫码添加（备注 AI）</a>
+      <a href="wechat.html">预约一次职业规划</a>
+      <a href="wechat.html">领取资料 &amp; 试看课</a>
+    </div>
+  </div>
+</footer>
+<div class="admin-footer">
+  <p class="content">两光年AI ｜ 懂 AI，更懂产品 ｜ 一站式AI产品经理入门指南 &amp; 从0开始学 AI agent ｜ © 2026 两光年AI</p>
+</div>
+
+</div><!-- /.page -->
+
+<script>
+// 嵌入模式自动缩放：被 iframe 承载（如飞书云文档网页块）时按宽度等比缩小，
+// 让版式回到 1200px 桌面版式，一屏能多看内容。正常打开不受影响。
+(function () {
+  if (window.self === window.top) return;
+  if (document.documentElement.hasAttribute("data-no-autoscale")) return;
+  // 1240 = 内容列 1200 + 左右留白；MIN=768 与首页一致（理由见首页注释）
+  var BASE = 1240, MIN = 768;
+  function apply() {
+    var w = window.innerWidth || document.documentElement.clientWidth;
+    if (!w) return;
+    var s = 1;
+    if (w >= MIN && w < BASE) s = Math.floor((w / BASE) * 100) / 100;
+    document.documentElement.style.zoom = s === 1 ? "" : String(s);
+  }
+  apply();
+  window.addEventListener("resize", apply);
+  window.addEventListener("orientationchange", apply);
+})();
+</script>
+</body>
+</html>
