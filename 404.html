@@ -45,7 +45,7 @@
   <script>
   // 404.html 会在任意路径下被服务，所以「回首页」不能用写死的 "/"：
   //   · GitHub Pages 项目站是 /<仓库名>/xxx → 站点根是 /<仓库名>/
-  //   · 绑了自有域名或放在根目录（如阿里云）→ 站点根就是 /
+  //   · 绑了自有域名，或部署在根目录（阿里云 / Nginx）→ 站点根就是 /
   // 这里按主机名判断，两种部署都不用改代码。
   (function () {
     var segs = location.pathname.split("/").filter(Boolean);
