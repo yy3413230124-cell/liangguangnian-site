@@ -183,7 +183,7 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
    它自己只有 656px 宽，一旦成为容器，后代就会用它做断点判断，
    于是「≤720px 用手机版式」这类规则会在桌面宽度上被误触发。
    首屏的窄栏适配改由 .page 容器宽度触发（见文件末尾的 @container (max-width:1060px)）。 */
-.hero-left{width:656px;max-width:100%;flex:0 1 656px;min-width:0;
+.hero-left{width:530px;max-width:100%;flex:0 1 530px;min-width:0;
   display:flex;flex-direction:column;align-items:flex-start;gap:22px}
 .eyebrow{font-family:var(--font-display);font-size:26px;line-height:1.5;color:#22beff;font-weight:400}
 .hero h1{font-size:60px;line-height:1.16;letter-spacing:0;font-weight:400}
@@ -222,8 +222,18 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
 .btn-pixel.ghost::before{background:var(--accent)}
 .btn-pixel.ghost::after{background:rgba(36,189,255,.25)}
 .btn-pixel.wide{width:auto;padding:0 22px}
-.hero-right{width:410px;max-width:100%;height:380px;flex:0 0 410px;margin-right:50px}
+.hero-right{width:350px;max-width:100%;height:324px;flex:0 0 350px;margin-right:0}
 .hero-right svg{width:100%;height:100%}
+
+/* ---------- 首屏第三栏：进阶班招生海报 ----------
+   不是「外挂一张图」：它复用站内 .fig 的 3:4 图片规范（12px 圆角 + #dadce0 描边 +
+   主色短条说明），和课程图集是同一套语言；整块可点，去处和左侧「预约职业规划」一致。
+   宽度是从原来两栏里重新分配的：530 + 40 + 350 + 40 + 240 = 1200。 */
+.hero-poster{flex:0 0 240px;width:240px;margin:0}
+.hero-poster a{display:block;border-radius:var(--r-card);transition:transform .2s ease}
+.hero-poster a:hover{transform:translateY(-4px)}
+.hero-poster img{transition:box-shadow .2s ease}
+.hero-poster a:hover img{box-shadow:var(--shadow-card)}
 
 /* ---------- 嵌入模式（被 iframe 承载，如飞书云文档网页块） ----------
    要求：嵌入后的排版必须和直接打开**完全一致**。
@@ -549,13 +559,14 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
 /* 首屏左栏变窄时（只在窄窗口出现）自动缩小标题，避免标题和英文小标各折成两行。
    放在这里是为了排在 .hero h1 等基础规则之后——同优先级下后写的生效。
    嵌入飞书云文档时左栏仍是 656px，不会命中，因此嵌入版和直接打开保持完全一致。 */
-/* 版式宽度（.page 宽度）不足以并排放下首屏两栏时，让插画落到下方。
-   1200 内容列里左栏 656 + 间距 40 + 右栏 410 + 右边距 50 = 1156，留出余量取 1060。
+/* 版式宽度（.page 宽度）不足以并排放下首屏三栏时，让插画和海报落到下方。
+   1200 内容列里左栏 530 + 间距 40 + 路线图 350 + 间距 40 + 海报 240 = 1200，取 1180 作阈值。
    关键：这条按【容器宽度】判断——嵌入飞书云文档时容器是 1240，不会命中，
    所以嵌入版和直接打开的判定完全一致。 */
-@container (max-width:1060px){
+@container (max-width:1180px){
   .hero-inner{flex-direction:column;align-items:flex-start;gap:26px}
   .hero-right{width:100%;max-width:520px;flex:0 0 auto;height:auto;margin:6px auto 0}
+  .hero-poster{width:100%;max-width:260px;flex:0 0 auto;margin:18px auto 0}
 }
 @media (prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}
@@ -610,6 +621,9 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
   .hero-inner{padding-top:26px;gap:20px}
   .hero-left{gap:14px}
   .hero-right{display:none}
+  /* 手机端首屏是转化位（放二维码），插画和海报都在下方有对应内容，
+     这里一并收起来，避免把二维码挤出首屏。 */
+  .hero-poster{display:none}
   .eyebrow{font-size:13px;letter-spacing:.1em}
   .eyebrow .eyebrow-more{display:none}
   .hero-note{font-size:14px;line-height:1.85}
@@ -801,6 +815,18 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
         </g>
       </svg>
     </div>
+
+    <!-- 进阶班招生海报：复用站内 .fig 的 3:4 图片规范（12px 圆角 + #dadce0 描边 + 主色短条说明），
+         整块可点 → 微信咨询页，和左侧「预约职业规划」是同一个去处。
+         用的是 480×640 的展示尺寸（原图 1242×1656 有 1.66MB，放首屏太重）。 -->
+    <figure class="fig hero-poster">
+      <a href="wechat.html" aria-label="2 个月 AI 产品经理进阶班 · 加微信咨询">
+        <img src="assets/img/16-jinjieban-poster-hero.png"
+             alt="2 个月 AI 产品经理进阶班：定方向、建能力、做项目、拿 Offer 四步，用深度实战项目助力优质 offer"
+             width="480" height="640">
+      </a>
+      <figcaption>2 个月 · 进阶班<span>点击卡片，加微信咨询</span></figcaption>
+    </figure>
   </div>
 
   <!-- ============================= 四件事 ============================= -->
