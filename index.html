@@ -623,9 +623,10 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
   .hero-inner{padding-top:26px;gap:20px}
   .hero-left{gap:14px}
   .hero-right{display:none}
-  /* 手机端首屏是转化位（放二维码），插画和海报都在下方有对应内容，
-     这里一并收起来，避免把二维码挤出首屏。 */
-  .hero-poster{display:none}
+  /* 手机端：路线图插画隐藏（与下方「学习路线」信息重复），
+     但进阶班海报要保留——它是招生素材，按 3:4 铺满通栏，
+     排在按钮之后、四件事之前。 */
+  .hero-poster{display:block;width:100%;max-width:100%;margin:22px 0 0;flex:0 0 auto}
   .eyebrow{font-size:13px;letter-spacing:.1em}
   .eyebrow .eyebrow-more{display:none}
   .hero-note{font-size:14px;line-height:1.85}
