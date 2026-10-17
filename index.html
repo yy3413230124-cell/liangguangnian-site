@@ -664,6 +664,9 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
   .hero h1{font-size:38px}
   .hero h1 .line2{font-size:20px;margin-top:8px}
   .dottext{background-size:4px 4px}
+  /* 手机字号小，实心硬投影（2.3px 纯灰）会让字看着发糊：
+     缩小偏移、把投影调浅，保留点阵质感但轮廓清楚。 */
+  .hero h1 .dottext{filter:drop-shadow(1.1px 1.1px 0 rgba(114,115,117,.28))}
   /* ---------- 四件事：2×2 紧凑网格 ----------
      原来 4 张 112px 高卡片竖排约占 520px；现在 2×2、只留图标 + 标题，约 190px。
      `.ec-info` 是悬停才展开的（触屏本来也看不到），手机端直接去掉。 */
@@ -796,7 +799,7 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
 <main id="top">
 
 <!-- ============================= 首屏 ============================= -->
-<section class="hero">
+<section class="hero" id="hero">
   <!-- 参考站 hero 左下装饰块（581x395, left:0, top:160） -->
   <svg class="hero-deco" viewBox="0 0 581 395" fill="none" aria-hidden="true">
     <g opacity=".55">
@@ -810,7 +813,10 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
   <div class="container hero-inner">
     <div class="hero-left">
       <p class="eyebrow">AI PRODUCT MANAGER<span class="eyebrow-more"> · 系统化学习路径</span></p>
-      <h1 class="dottext">9 阶段 32 模块
+      <!-- 点阵效果只包住第一行：以前 .dottext 加在 h1 上，
+           父级的 drop-shadow 会把下面那行实体字也描出一层灰影（子元素 filter:none 撤不掉父级 filter），
+           手机上字小，那层灰影就让整块看着发糊。 -->
+      <h1><span class="dottext">9 阶段 32 模块</span>
         <span class="line2">把 AI 产品经理这条路，学成一条线</span>
       </h1>
       <p class="hero-note">职业规划、算法认知、项目交付、面试陪跑，四个环节是一条链。<b>我们不承诺“学完就进大厂”，也不承诺任何薪资数字</b><span class="note-more">；能承诺的是——走完这套流程，你手上会多出几个能写进简历、能在面试里被追问三层还站得住的真实项目。</span></p>
@@ -925,11 +931,150 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
         <p class="stats-note">我们是「一站式AI产品经理入门指南」与「从0开始学 AI agent」两个开源知识库的创建者，两个库都是互联网公开的。以上为知识库后台数据，区间 2025/09/11 – 2026/03/09。</p>
       </div>
       <figure class="fig reveal">
-        <img src="assets/img/02-kb-stats.jpg" alt="两光年AI 开源知识库后台数据截图：访问次数 280万+、单月浏览量 50万+、教程文档 2795 篇" loading="lazy">
+        <img src="assets/img/02-kb-stats.jpg" alt="两光年AI 开源知识库后台数据截图：访问次数 280万+、单月浏览量 50万+、教程文档 2795 篇" loading="lazy" width="1242" height="1656">
         <figcaption>知识库数据后台 <span>飞书文档 · 数据概览</span></figcaption>
       </figure>
     </div>
   </div>
+</section>
+
+<!-- ============================= 课程体系 ============================= -->
+<section class="container section" id="curriculum">
+  <div class="sec-title reveal">
+    <p class="head">Curriculum · 9 Stages 32 Modules</p>
+    <div class="body"><i class="stick"></i><h2 class="title">9 阶段 32 模块</h2><i class="stick"></i></div>
+    <p class="sec-sub">它不是并列的九门课，是一条有先后依赖的链路：前面不理解技术边界，后面的方案设计就只能靠抄；前面没动手做过项目，后面的简历和面试就没有素材可讲。每个阶段都有交付物，不是听完就算。</p>
+  </div>
+
+  <figure class="fig reveal" style="max-width:760px;margin:44px auto 0">
+    <img src="assets/img/03-curriculum-overview.jpg" alt="两光年AI 课程体系四大板块：AI产品经理系统教学、大厂导师带做AI项目、1v1针对性会议辅导、复盘答疑辅导协作" loading="lazy" width="1242" height="1656">
+    <figcaption>课程体系 · 四大板块 <span>系统教学 / 带做项目 / 1v1 辅导 / 闭环服务</span></figcaption>
+  </figure>
+
+  <!-- 阶段块 1 -->
+  <div class="phase-block reveal">
+    <div class="phase-head">
+      <span class="ph-en">Phase 01 · Cognition</span><h3>认知</h3>
+      <span class="ph-desc">这一阶段解决的问题只有一个——你该走哪条路</span>
+    </div>
+    <div class="stages single">
+      <article class="stage">
+        <span class="st-no">阶段 01</span>
+        <h4>AI 产品经理全局</h4>
+        <p>职责边界、能力模型与成长路径，行业现状与岗位分布。</p>
+        <div class="meta"><span class="lv l2"><i></i><i></i><i></i></span><span>入门</span></div>
+        <span class="deliver">交付物：职业路径判断</span>
+        <span class="go">查看详情 →</span>
+      </article>
+    </div>
+  </div>
+
+  <!-- 阶段块 2 -->
+  <div class="phase-block reveal">
+    <div class="phase-head">
+      <span class="ph-en">Phase 02 · Technology</span><h3>技术</h3>
+      <span class="ph-desc">目前招聘需求最集中的一块</span>
+    </div>
+    <div class="stages">
+      <article class="stage">
+        <span class="st-no">阶段 02</span>
+        <h4>传统人工智能</h4>
+        <p>机器学习流程、七大算法精讲、CV 与文本网络结构。学它不是为了写代码，是为了在需求评审上能判断方案做不做得成，而不是被一句“做不了”堵回来。</p>
+        <div class="meta"><span class="lv l1"><i></i><i></i><i></i></span><span>基础</span></div>
+        <span class="deliver">交付物：技术方案可行性判断</span>
+        <span class="go">查看详情 →</span>
+      </article>
+      <article class="stage">
+        <span class="st-no">阶段 03</span>
+        <h4>大模型技术</h4>
+        <p>Prompt 工程、LLM 数据处理与微调、自动化评估、AIGC 文生图与行业问答。</p>
+        <div class="meta"><span class="lv l2"><i></i><i></i><i></i></span><span>进阶</span></div>
+        <span class="deliver">交付物：大模型方案与评估指标</span>
+        <span class="go">查看详情 →</span>
+      </article>
+      <article class="stage">
+        <span class="st-no">阶段 04</span>
+        <h4>智能体与 Vibe Coding</h4>
+        <p>Agent 架构、RAG 知识库、Embedding 与 Rerank、Multi-Agent 项目，最后用 Claude Code 做 CLI 实战。</p>
+        <div class="meta"><span class="lv l3"><i></i><i></i><i></i></span><span>高级</span></div>
+        <span class="deliver">交付物：可跑的 Agent / RAG Demo</span>
+        <span class="go">查看详情 →</span>
+      </article>
+    </div>
+  </div>
+
+  <!-- 阶段块 3 -->
+  <div class="phase-block reveal">
+    <div class="phase-head">
+      <span class="ph-en">Phase 03 · Build</span><h3>项目</h3>
+      <span class="ph-desc">走完整闭环，把前面学到的串成作品</span>
+    </div>
+    <div class="stages two">
+      <article class="stage">
+        <span class="st-no">阶段 05</span>
+        <h4>产品经理系统课</h4>
+        <p>产品核心思维、业务流程与需求管理、原型与交互设计，B 端 CRM 加 C 端电商实战，BRD / MRD / PRD 三份文档自己写出来。</p>
+        <div class="meta"><span class="lv l1"><i></i><i></i><i></i></span><span>基础</span></div>
+        <span class="deliver">交付物：BRD / MRD / PRD + 原型</span>
+        <span class="go">查看详情 →</span>
+      </article>
+      <article class="stage">
+        <span class="st-no">阶段 06</span>
+        <h4>AI 产品项目实战</h4>
+        <p>智能客服、AIGC 提效、短视频 PLC 挂载三个方向，从需求分析、数据训练到模型验收和项目复盘，走完整闭环。</p>
+        <div class="meta"><span class="lv l3"><i></i><i></i><i></i></span><span>高级</span></div>
+        <span class="deliver">交付物：完整项目 + 复盘材料</span>
+        <span class="go">查看详情 →</span>
+      </article>
+    </div>
+  </div>
+
+  <!-- 阶段块 4 -->
+  <div class="phase-block reveal">
+    <div class="phase-head">
+      <span class="ph-en">Phase 04 · Land</span><h3>求职</h3>
+      <span class="ph-desc">把作品翻译成面试官能听懂的语言</span>
+    </div>
+    <div class="stages">
+      <article class="stage">
+        <span class="st-no">阶段 07</span>
+        <h4>简历与面试辅导</h4>
+        <p>简历逐句改、优秀简历结构分析、面试复盘与追问训练。</p>
+        <div class="meta"><span class="lv l2"><i></i><i></i><i></i></span><span>进阶</span></div>
+        <span class="deliver">交付物：一版经得起追问的简历</span>
+        <span class="go">查看详情 →</span>
+      </article>
+      <article class="stage">
+        <span class="st-no">阶段 08</span>
+        <h4>实操带学</h4>
+        <p>竞品与市场定位、功能与非功能需求、数据收集清洗标注与训练集划分，把前面七个阶段串成一条线。</p>
+        <div class="meta"><span class="lv l2"><i></i><i></i><i></i></span><span>进阶</span></div>
+        <span class="deliver">交付物：端到端实操记录</span>
+        <span class="go">查看详情 →</span>
+      </article>
+      <article class="stage">
+        <span class="st-no">阶段 09</span>
+        <h4>速刷项目库</h4>
+        <p>自动驾驶、个性化推荐、评论意向预测、奢侈品估价、人脸识别、智能体搭建等方向，各配 PRD 与复盘话术，面试前补素材用。</p>
+        <div class="meta"><span class="lv l1"><i></i><i></i><i></i></span><span>素材</span></div>
+        <span class="deliver">交付物：一整套可套用的复盘话术</span>
+        <span class="go">查看详情 →</span>
+      </article>
+    </div>
+  </div>
+
+  <div class="outline-strip">
+    <figure class="fig reveal">
+      <img src="assets/img/04-modules-hours.jpg" alt="课程内容与课时：9 个阶段、32 个模块、108 课时" loading="lazy" width="1242" height="1656">
+      <figcaption>课程内容与课时 <span>9 阶段 / 32 模块 / 108 课时</span></figcaption>
+    </figure>
+    <figure class="fig reveal">
+      <img src="assets/img/05-course-outline.jpg" alt="两光年AI产品课程大纲：108 课时 9 阶段完整模块表" loading="lazy" width="1242" height="1656">
+      <figcaption>课程大纲 <span>108 课时 / 9 阶段</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="more-wrap reveal"><span class="more">more</span></div>
 </section>
 
 <!-- ============================= 零散学 vs 系统学 ============================= -->
@@ -1059,144 +1204,7 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
   </div>
 </section>
 
-<!-- ============================= 课程体系 ============================= -->
-<section class="container section" id="curriculum">
-  <div class="sec-title reveal">
-    <p class="head">Curriculum · 9 Stages 32 Modules</p>
-    <div class="body"><i class="stick"></i><h2 class="title">9 阶段 32 模块</h2><i class="stick"></i></div>
-    <p class="sec-sub">它不是并列的九门课，是一条有先后依赖的链路：前面不理解技术边界，后面的方案设计就只能靠抄；前面没动手做过项目，后面的简历和面试就没有素材可讲。每个阶段都有交付物，不是听完就算。</p>
-  </div>
 
-  <figure class="fig reveal" style="max-width:760px;margin:44px auto 0">
-    <img src="assets/img/03-curriculum-overview.jpg" alt="两光年AI 课程体系四大板块：AI产品经理系统教学、大厂导师带做AI项目、1v1针对性会议辅导、复盘答疑辅导协作" loading="lazy">
-    <figcaption>课程体系 · 四大板块 <span>系统教学 / 带做项目 / 1v1 辅导 / 闭环服务</span></figcaption>
-  </figure>
-
-  <!-- 阶段块 1 -->
-  <div class="phase-block reveal">
-    <div class="phase-head">
-      <span class="ph-en">Phase 01 · Cognition</span><h3>认知</h3>
-      <span class="ph-desc">这一阶段解决的问题只有一个——你该走哪条路</span>
-    </div>
-    <div class="stages single">
-      <article class="stage">
-        <span class="st-no">阶段 01</span>
-        <h4>AI 产品经理全局</h4>
-        <p>职责边界、能力模型与成长路径，行业现状与岗位分布。</p>
-        <div class="meta"><span class="lv l2"><i></i><i></i><i></i></span><span>入门</span></div>
-        <span class="deliver">交付物：职业路径判断</span>
-        <span class="go">查看详情 →</span>
-      </article>
-    </div>
-  </div>
-
-  <!-- 阶段块 2 -->
-  <div class="phase-block reveal">
-    <div class="phase-head">
-      <span class="ph-en">Phase 02 · Technology</span><h3>技术</h3>
-      <span class="ph-desc">目前招聘需求最集中的一块</span>
-    </div>
-    <div class="stages">
-      <article class="stage">
-        <span class="st-no">阶段 02</span>
-        <h4>传统人工智能</h4>
-        <p>机器学习流程、七大算法精讲、CV 与文本网络结构。学它不是为了写代码，是为了在需求评审上能判断方案做不做得成，而不是被一句“做不了”堵回来。</p>
-        <div class="meta"><span class="lv l1"><i></i><i></i><i></i></span><span>基础</span></div>
-        <span class="deliver">交付物：技术方案可行性判断</span>
-        <span class="go">查看详情 →</span>
-      </article>
-      <article class="stage">
-        <span class="st-no">阶段 03</span>
-        <h4>大模型技术</h4>
-        <p>Prompt 工程、LLM 数据处理与微调、自动化评估、AIGC 文生图与行业问答。</p>
-        <div class="meta"><span class="lv l2"><i></i><i></i><i></i></span><span>进阶</span></div>
-        <span class="deliver">交付物：大模型方案与评估指标</span>
-        <span class="go">查看详情 →</span>
-      </article>
-      <article class="stage">
-        <span class="st-no">阶段 04</span>
-        <h4>智能体与 Vibe Coding</h4>
-        <p>Agent 架构、RAG 知识库、Embedding 与 Rerank、Multi-Agent 项目，最后用 Claude Code 做 CLI 实战。</p>
-        <div class="meta"><span class="lv l3"><i></i><i></i><i></i></span><span>高级</span></div>
-        <span class="deliver">交付物：可跑的 Agent / RAG Demo</span>
-        <span class="go">查看详情 →</span>
-      </article>
-    </div>
-  </div>
-
-  <!-- 阶段块 3 -->
-  <div class="phase-block reveal">
-    <div class="phase-head">
-      <span class="ph-en">Phase 03 · Build</span><h3>项目</h3>
-      <span class="ph-desc">走完整闭环，把前面学到的串成作品</span>
-    </div>
-    <div class="stages two">
-      <article class="stage">
-        <span class="st-no">阶段 05</span>
-        <h4>产品经理系统课</h4>
-        <p>产品核心思维、业务流程与需求管理、原型与交互设计，B 端 CRM 加 C 端电商实战，BRD / MRD / PRD 三份文档自己写出来。</p>
-        <div class="meta"><span class="lv l1"><i></i><i></i><i></i></span><span>基础</span></div>
-        <span class="deliver">交付物：BRD / MRD / PRD + 原型</span>
-        <span class="go">查看详情 →</span>
-      </article>
-      <article class="stage">
-        <span class="st-no">阶段 06</span>
-        <h4>AI 产品项目实战</h4>
-        <p>智能客服、AIGC 提效、短视频 PLC 挂载三个方向，从需求分析、数据训练到模型验收和项目复盘，走完整闭环。</p>
-        <div class="meta"><span class="lv l3"><i></i><i></i><i></i></span><span>高级</span></div>
-        <span class="deliver">交付物：完整项目 + 复盘材料</span>
-        <span class="go">查看详情 →</span>
-      </article>
-    </div>
-  </div>
-
-  <!-- 阶段块 4 -->
-  <div class="phase-block reveal">
-    <div class="phase-head">
-      <span class="ph-en">Phase 04 · Land</span><h3>求职</h3>
-      <span class="ph-desc">把作品翻译成面试官能听懂的语言</span>
-    </div>
-    <div class="stages">
-      <article class="stage">
-        <span class="st-no">阶段 07</span>
-        <h4>简历与面试辅导</h4>
-        <p>简历逐句改、优秀简历结构分析、面试复盘与追问训练。</p>
-        <div class="meta"><span class="lv l2"><i></i><i></i><i></i></span><span>进阶</span></div>
-        <span class="deliver">交付物：一版经得起追问的简历</span>
-        <span class="go">查看详情 →</span>
-      </article>
-      <article class="stage">
-        <span class="st-no">阶段 08</span>
-        <h4>实操带学</h4>
-        <p>竞品与市场定位、功能与非功能需求、数据收集清洗标注与训练集划分，把前面七个阶段串成一条线。</p>
-        <div class="meta"><span class="lv l2"><i></i><i></i><i></i></span><span>进阶</span></div>
-        <span class="deliver">交付物：端到端实操记录</span>
-        <span class="go">查看详情 →</span>
-      </article>
-      <article class="stage">
-        <span class="st-no">阶段 09</span>
-        <h4>速刷项目库</h4>
-        <p>自动驾驶、个性化推荐、评论意向预测、奢侈品估价、人脸识别、智能体搭建等方向，各配 PRD 与复盘话术，面试前补素材用。</p>
-        <div class="meta"><span class="lv l1"><i></i><i></i><i></i></span><span>素材</span></div>
-        <span class="deliver">交付物：一整套可套用的复盘话术</span>
-        <span class="go">查看详情 →</span>
-      </article>
-    </div>
-  </div>
-
-  <div class="outline-strip">
-    <figure class="fig reveal">
-      <img src="assets/img/04-modules-hours.jpg" alt="课程内容与课时：9 个阶段、32 个模块、108 课时" loading="lazy">
-      <figcaption>课程内容与课时 <span>9 阶段 / 32 模块 / 108 课时</span></figcaption>
-    </figure>
-    <figure class="fig reveal">
-      <img src="assets/img/05-course-outline.jpg" alt="两光年AI产品课程大纲：108 课时 9 阶段完整模块表" loading="lazy">
-      <figcaption>课程大纲 <span>108 课时 / 9 阶段</span></figcaption>
-    </figure>
-  </div>
-
-  <div class="more-wrap reveal"><span class="more">more</span></div>
-</section>
 
 <!-- ============================= 项目七步法 ============================= -->
 <section class="container section" id="project">
@@ -1226,7 +1234,7 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
   <p class="steps-note reveal">第三步和第五步是分水岭。<b>技术方案设计</b>决定你会不会用大模型、RAG、Agent、多模态来解决问题；<b>模型验收与效果评估</b>决定你能不能给出指标、证明方案达到了业务目标。面试官追问的通常是这两段。</p>
 
   <figure class="fig reveal" style="max-width:620px;margin:44px auto 0">
-    <img src="assets/img/06-project-7steps.jpg" alt="深度实战项目七步法：真实业务场景切入、业务需求深度分析、AI技术方案设计、产品方案与PRD输出、模型验收与效果评估、项目复盘与经验沉淀、项目成果赋能求职" loading="lazy">
+    <img src="assets/img/06-project-7steps.jpg" alt="深度实战项目七步法：真实业务场景切入、业务需求深度分析、AI技术方案设计、产品方案与PRD输出、模型验收与效果评估、项目复盘与经验沉淀、项目成果赋能求职" loading="lazy" width="1242" height="1656">
     <figcaption>深度实战项目 · 七步法 <span>从场景切入到成果赋能求职</span></figcaption>
   </figure>
 </section>
@@ -1267,11 +1275,11 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
 
   <div class="fig-row c2 reveal" style="max-width:840px;margin-left:auto;margin-right:auto">
     <figure class="fig">
-      <img src="assets/img/07-coaching.jpg" alt="求职陪跑：简历精修与面试辅导" loading="lazy">
+      <img src="assets/img/07-coaching.jpg" alt="求职陪跑：简历精修与面试辅导" loading="lazy" width="1242" height="1656">
       <figcaption>求职陪跑 <span>简历精修 + 面试辅导</span></figcaption>
     </figure>
     <figure class="fig">
-      <img src="assets/img/08-coaching-records.jpg" alt="一对一辅导记录：腾讯会议全程录屏、云端保存、随时回看" loading="lazy">
+      <img src="assets/img/08-coaching-records.jpg" alt="一对一辅导记录：腾讯会议全程录屏、云端保存、随时回看" loading="lazy" width="1242" height="1656">
       <figcaption>一对一辅导记录 <span>腾讯会议 · 录屏云端复盘</span></figcaption>
     </figure>
   </div>
@@ -1288,31 +1296,31 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
   <div class="carousel reveal" data-carousel>
     <div class="carousel-track" tabindex="0" role="group" aria-label="学员真实反馈截图，共 7 张，可左右滑动或使用左右方向键切换">
       <figure class="fig carousel-item">
-        <img src="assets/img/09-feedback-resume.jpg" alt="学员反馈截图：简历精修" loading="lazy">
+        <img src="assets/img/09-feedback-resume.jpg" alt="学员反馈截图：简历精修" loading="lazy" width="1242" height="1656">
         <figcaption>简历精修 <span>把所学的大模型知识与公司实际业务关联，重新写出了项目经历</span></figcaption>
       </figure>
       <figure class="fig carousel-item">
-        <img src="assets/img/10-feedback-interview.jpg" alt="学员反馈截图：面试辅导" loading="lazy">
+        <img src="assets/img/10-feedback-interview.jpg" alt="学员反馈截图：面试辅导" loading="lazy" width="1242" height="1656">
         <figcaption>面试辅导 <span>面试前一天紧急约辅导，第二天推进到了下一轮</span></figcaption>
       </figure>
       <figure class="fig carousel-item">
-        <img src="assets/img/11-feedback-offer.jpg" alt="学员反馈截图：面试进展到 offer" loading="lazy">
+        <img src="assets/img/11-feedback-offer.jpg" alt="学员反馈截图：面试进展到 offer" loading="lazy" width="1242" height="1656">
         <figcaption>面试进展到 offer <span>几轮面试之后拿到 offer，进入下一步选择</span></figcaption>
       </figure>
       <figure class="fig carousel-item">
-        <img src="assets/img/12-feedback-industry.jpg" alt="学员反馈截图：行业选择答疑" loading="lazy">
+        <img src="assets/img/12-feedback-industry.jpg" alt="学员反馈截图：行业选择答疑" loading="lazy" width="1242" height="1656">
         <figcaption>行业选择答疑 <span>AI + 教育、搜推策略这类岗位该不该去</span></figcaption>
       </figure>
       <figure class="fig carousel-item">
-        <img src="assets/img/13-feedback-tech.jpg" alt="学员反馈截图：技术问题答疑" loading="lazy">
+        <img src="assets/img/13-feedback-tech.jpg" alt="学员反馈截图：技术问题答疑" loading="lazy" width="1242" height="1656">
         <figcaption>技术问题答疑 <span>技术方案里的说法站不站得住</span></figcaption>
       </figure>
       <figure class="fig carousel-item">
-        <img src="assets/img/14-feedback-offer-choice.jpg" alt="学员反馈截图：offer 选择" loading="lazy">
+        <img src="assets/img/14-feedback-offer-choice.jpg" alt="学员反馈截图：offer 选择" loading="lazy" width="1242" height="1656">
         <figcaption>offer 选择 <span>拿到 offer 之后的取舍</span></figcaption>
       </figure>
       <figure class="fig carousel-item">
-        <img src="assets/img/15-feedback-salary.jpg" alt="学员反馈截图：薪资与职业选择" loading="lazy">
+        <img src="assets/img/15-feedback-salary.jpg" alt="学员反馈截图：薪资与职业选择" loading="lazy" width="1242" height="1656">
         <figcaption>薪资与职业选择 <span>薪资涨幅与 AI 岗的长期价值怎么权衡</span></figcaption>
       </figure>
     </div>
@@ -1377,7 +1385,7 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
       </div>
     </div>
     <figure class="fig cta-poster reveal">
-      <img src="assets/img/01-hero-poster.jpg" alt="2 个月 AI 产品经理进阶班：定方向、建能力、做项目、拿 Offer，用深度实战项目助力优质 offer" loading="lazy">
+      <img src="assets/img/01-hero-poster.jpg" alt="2 个月 AI 产品经理进阶班：定方向、建能力、做项目、拿 Offer，用深度实战项目助力优质 offer" loading="lazy" width="1242" height="1656">
       <figcaption>2 个月 AI 产品经理 · 进阶班 <span>定方向 → 建能力 → 做项目 → 拿 Offer</span></figcaption>
     </figure>
   </div>
