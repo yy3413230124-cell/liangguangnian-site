@@ -232,11 +232,12 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
    两栏顶端底端因此严格对齐，不会参差不齐。
    宽度从原来两栏里重新分配：527 + 40 + 350 + 40 + 243 = 1200。 */
 .hero-poster{flex:0 0 243px;width:243px;margin:0}
-.hero-poster picture{display:block}
 .hero-poster a{display:block;border-radius:var(--r-card);transition:transform .2s ease}
 .hero-poster a:hover{transform:translateY(-4px)}
 .hero-poster img{transition:box-shadow .2s ease}
 .hero-poster a:hover img{box-shadow:var(--shadow-card)}
+/* 推广卡的文案块只在手机端出现；桌面端是一张纯海报卡片 */
+.hero-poster .hp-body{display:none}
 
 /* ---------- 嵌入模式（被 iframe 承载，如飞书云文档网页块） ----------
    要求：嵌入后的排版必须和直接打开**完全一致**。
@@ -624,15 +625,41 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
   .hero-inner{padding-top:26px;gap:20px}
   .hero-left{gap:14px}
   .hero-right{display:none}
-  /* 手机端：路线图插画隐藏（与下方「学习路线」信息重复），
-     但进阶班海报要保留——它是招生素材，按 3:4 铺满通栏，
-     排在按钮之后、四件事之前。 */
-  .hero-poster{display:block;width:100%;max-width:100%;margin:22px 0 0;flex:0 0 auto}
+  /* 手机端：路线图插画隐藏（与下方「学习路线」信息重复）；
+     进阶班海报改成「横向推广卡」——缩略图 + 利益点 + 入口。
+     整张竖版海报铺满通栏会把首屏拉长一倍，读起来像贴了张图。 */
+  .hero-poster{display:block;width:100%;max-width:100%;margin:20px 0 0;flex:0 0 auto}
+  .hero-poster a{
+    display:flex;align-items:center;gap:14px;padding:10px;
+    background:linear-gradient(120deg,#eef9fe,#fff 62%);
+    border:1px solid var(--border);border-radius:14px;
+    box-shadow:0 6px 18px rgba(16,121,173,.10);
+  }
+  .hero-poster img{
+    width:104px;height:auto;flex:0 0 104px;display:block;
+    border-radius:10px;border:0;box-shadow:0 4px 10px rgba(16,121,173,.16);
+  }
+  .hero-poster .hp-body{display:flex;flex-direction:column;min-width:0;text-align:left}
+  .hero-poster .hp-tag{
+    font-family:var(--font-heading);font-size:11px;letter-spacing:.08em;
+    color:#0e6fa8;line-height:1.2;
+  }
+  .hero-poster .hp-title{
+    margin-top:5px;font-family:var(--font-heading);font-weight:600;
+    font-size:15px;line-height:1.45;color:var(--ink-heading);
+  }
+  .hero-poster .hp-link{
+    margin-top:8px;font-family:var(--font-heading);font-size:13px;
+    color:#0e6fa8;line-height:1.2;
+  }
   .eyebrow{font-size:13px;letter-spacing:.1em}
   .eyebrow .eyebrow-more{display:none}
   .hero-note{font-size:14px;line-height:1.85}
   .hero-note .note-more{display:none}
   .hero-cta .cta-secondary{display:none}
+  /* .hero-cta 是 column 里的 flex 项，宽度默认「收缩到内容」——
+     不显式给 100%，里面的按钮 width:100% 只会算出 96px。 */
+  .hero-cta{width:100%}
   .hero-cta .btn-pixel{width:100%}
   .hero h1{font-size:38px}
   .hero h1 .line2{font-size:20px;margin-top:8px}
@@ -825,14 +852,15 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
          用的是 480×640 的展示尺寸（原图 1242×1656 有 1.66MB，放首屏太重）。 -->
     <figure class="fig hero-poster">
       <a href="wechat.html" aria-label="2 个月 AI 产品经理进阶班 · 加微信咨询">
-        <picture>
-          <!-- 手机 ≤720 用专门重排的竖版（700×933，显示 350 宽，字更清楚）；
-               其它尺寸用原海报的展示版。两张同比例，切换不会引起跳动。 -->
-          <source media="(max-width:720px)" srcset="assets/img/16-jinjieban-poster-mobile.png">
-          <img src="assets/img/16-jinjieban-poster-hero.png"
-               alt="2 个月 AI 产品经理进阶班：定方向、建能力、做项目、拿 Offer 四步，用深度实战项目助力优质 offer"
-               width="480" height="640">
-        </picture>
+        <img src="assets/img/16-jinjieban-poster-hero.png"
+             alt="2 个月 AI 产品经理进阶班：定方向、建能力、做项目、拿 Offer 四步，用深度实战项目助力优质 offer"
+             width="480" height="640">
+        <!-- 手机端（≤720）才显示：把整张竖版海报变成「横向推广卡」，缩略图 + 一句利益点 + 入口 -->
+        <span class="hp-body">
+          <span class="hp-tag">进阶班 · 2 个月</span>
+          <span class="hp-title">用深度实战项目，助力优质 offer</span>
+          <span class="hp-link">了解详情 →</span>
+        </span>
       </a>
     </figure>
   </div>
