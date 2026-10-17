@@ -183,7 +183,7 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
    它自己只有 656px 宽，一旦成为容器，后代就会用它做断点判断，
    于是「≤720px 用手机版式」这类规则会在桌面宽度上被误触发。
    首屏的窄栏适配改由 .page 容器宽度触发（见文件末尾的 @container (max-width:1060px)）。 */
-.hero-left{width:530px;max-width:100%;flex:0 1 530px;min-width:0;
+.hero-left{width:527px;max-width:100%;flex:0 1 527px;min-width:0;
   display:flex;flex-direction:column;align-items:flex-start;gap:22px}
 .eyebrow{font-family:var(--font-display);font-size:26px;line-height:1.5;color:#22beff;font-weight:400}
 .hero h1{font-size:60px;line-height:1.16;letter-spacing:0;font-weight:400}
@@ -226,10 +226,12 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
 .hero-right svg{width:100%;height:100%}
 
 /* ---------- 首屏第三栏：进阶班招生海报 ----------
-   不是「外挂一张图」：它复用站内 .fig 的 3:4 图片规范（12px 圆角 + #dadce0 描边 +
-   主色短条说明），和课程图集是同一套语言；整块可点，去处和左侧「预约职业规划」一致。
-   宽度是从原来两栏里重新分配的：530 + 40 + 350 + 40 + 240 = 1200。 */
-.hero-poster{flex:0 0 240px;width:240px;margin:0}
+   不是「外挂一张图」：它复用站内 .fig 的 3:4 图片规范（12px 圆角 + #dadce0 描边），
+   和课程图集是同一套语言；整块可点，去处和左侧「预约职业规划」一致。
+   尺寸刻意做成和右边路线图卡片**等高**（243×324 = 3:4，与 .hero-right 的 324 一致），
+   两栏顶端底端因此严格对齐，不会参差不齐。
+   宽度从原来两栏里重新分配：527 + 40 + 350 + 40 + 243 = 1200。 */
+.hero-poster{flex:0 0 243px;width:243px;margin:0}
 .hero-poster a{display:block;border-radius:var(--r-card);transition:transform .2s ease}
 .hero-poster a:hover{transform:translateY(-4px)}
 .hero-poster img{transition:box-shadow .2s ease}
@@ -825,7 +827,6 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
              alt="2 个月 AI 产品经理进阶班：定方向、建能力、做项目、拿 Offer 四步，用深度实战项目助力优质 offer"
              width="480" height="640">
       </a>
-      <figcaption>2 个月 · 进阶班<span>点击卡片，加微信咨询</span></figcaption>
     </figure>
   </div>
 
