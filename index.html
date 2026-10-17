@@ -238,6 +238,8 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
 .hero-poster a:hover img{box-shadow:var(--shadow-card)}
 /* 推广卡的文案块只在手机端出现；桌面端是一张纯海报卡片 */
 .hero-poster .hp-body{display:none}
+/* 手机专用副本（放在「四件事」之后）：默认隐藏，只在 ≤720 时显示 */
+.hero-poster-mobile{display:none}
 
 /* ---------- 嵌入模式（被 iframe 承载，如飞书云文档网页块） ----------
    要求：嵌入后的排版必须和直接打开**完全一致**。
@@ -628,7 +630,9 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
   /* 手机端：路线图插画隐藏（与下方「学习路线」信息重复）；
      进阶班海报改成「横向推广卡」——缩略图 + 利益点 + 入口。
      整张竖版海报铺满通栏会把首屏拉长一倍，读起来像贴了张图。 */
-  .hero-poster{display:block;width:100%;max-width:100%;margin:20px 0 0;flex:0 0 auto}
+  /* 手机端把推广卡从首屏挪到「四件事」之后：首屏那份隐藏，用下面的 .hero-poster-mobile */
+  .hero-inner .hero-poster{display:none}
+  .hero-poster-mobile{display:block;width:100%;max-width:100%;margin:22px 0 0}
   .hero-poster a{
     display:flex;align-items:center;gap:14px;padding:10px;
     background:linear-gradient(120deg,#eef9fe,#fff 62%);
@@ -918,6 +922,21 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
         <p class="ec-info">拆岗、押题、模拟、复盘。简历逐句改，面试一对一磨。腾讯会议一对一，<b>全程录屏、云端保存</b>，简历修改与面试模拟都在服务内，不再另收费。</p>
       </div>
     </div>
+
+    <!-- 手机端专用（≤720 才显示）：把进阶班推广卡放到「四件事」之后。
+         桌面端这份是隐藏的——桌面在用的是首屏右栏那份（三栏里与路线图等高）。 -->
+    <figure class="fig hero-poster hero-poster-mobile">
+      <a href="wechat.html" aria-label="2 个月 AI 产品经理进阶班 · 加微信咨询">
+        <img src="assets/img/16-jinjieban-poster-hero.png"
+             alt="2 个月 AI 产品经理进阶班：定方向、建能力、做项目、拿 Offer 四步，用深度实战项目助力优质 offer"
+             width="480" height="640">
+        <span class="hp-body">
+          <span class="hp-tag">进阶班 · 2 个月</span>
+          <span class="hp-title">用深度实战项目，助力优质 offer</span>
+          <span class="hp-link">了解详情 →</span>
+        </span>
+      </a>
+    </figure>
 
     <!-- ============================= 数据背书 ============================= -->
     <div class="stats-split">
