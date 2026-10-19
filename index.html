@@ -546,11 +546,20 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
   margin-top:0;grid-template-columns:1fr 1fr;
   border:1px solid #eee;border-radius:var(--r-card);overflow:hidden
 }
-.stats-split .stat{padding:24px 18px;border-left:1px solid #eee;border-top:1px solid #eee}
+.stats-split .stat{
+  display:block;padding:24px 18px;border-left:1px solid #eee;border-top:1px solid #eee;
+  transition:background .2s,box-shadow .2s
+}
+.stats-split .stat:hover{background:var(--accent-wash-2)}
 .stats-split .stat:nth-child(odd){border-left:0}
 .stats-split .stat:nth-child(-n+2){border-top:0}
 .stats-split .stat b{font-size:32px}
 .stats-split .stats-note{text-align:left;margin-top:18px}
+.stats-split .stats-note a{
+  color:inherit;border-bottom:1px solid rgba(14,111,168,.28);
+  transition:color .2s,border-color .2s
+}
+.stats-split .stats-note a:hover{color:#0e6fa8;border-color:currentColor}
 .stats-split .kb-entry{
   display:inline-flex;align-items:center;gap:7px;margin-top:18px;
   padding:9px 14px;border:1px solid #bfe7f8;border-radius:var(--r-sm);
@@ -560,6 +569,11 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
 }
 .stats-split .kb-entry:hover{background:var(--accent-wash);border-color:var(--accent-soft);transform:translateY(-2px)}
 .stats-split .kb-entry span{font-size:12px}
+.stats-split .fig-link{display:block}
+.stats-split .stat:focus-visible,.stats-split .stats-note a:focus-visible,
+.stats-split .kb-entry:focus-visible,.stats-split .fig-link:focus-visible{
+  outline:2px solid var(--accent);outline-offset:2px
+}
 .stats-split .fig img{border-radius:var(--r-card)}
 
 /* 课程大纲预览横排 */
@@ -955,16 +969,18 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
     <div class="stats-split">
       <div class="reveal">
         <div class="stats">
-          <div class="stat"><b>280万+</b><span>知识库半年访问次数</span></div>
-          <div class="stat"><b>50万+</b><span>单月浏览量</span></div>
-          <div class="stat"><b>2,795 篇</b><span>视频 / 工作流 / 图文教程</span></div>
-          <div class="stat"><b>762,391</b><span>知识库访问人数</span></div>
+          <a class="stat" href="https://v11enp9ok1h.feishu.cn/wiki/space/7330809570845048833?ccm_open_type=lark_wiki_spaceLink&amp;open_tab_from=wiki_home" target="_blank" rel="noopener noreferrer" aria-label="查看知识库：知识库半年访问次数"><b>280万+</b><span>知识库半年访问次数</span></a>
+          <a class="stat" href="https://v11enp9ok1h.feishu.cn/wiki/space/7330809570845048833?ccm_open_type=lark_wiki_spaceLink&amp;open_tab_from=wiki_home" target="_blank" rel="noopener noreferrer" aria-label="查看知识库：单月浏览量"><b>50万+</b><span>单月浏览量</span></a>
+          <a class="stat" href="https://v11enp9ok1h.feishu.cn/wiki/space/7330809570845048833?ccm_open_type=lark_wiki_spaceLink&amp;open_tab_from=wiki_home" target="_blank" rel="noopener noreferrer" aria-label="查看知识库：视频、工作流与图文教程"><b>2,795 篇</b><span>视频 / 工作流 / 图文教程</span></a>
+          <a class="stat" href="https://v11enp9ok1h.feishu.cn/wiki/space/7330809570845048833?ccm_open_type=lark_wiki_spaceLink&amp;open_tab_from=wiki_home" target="_blank" rel="noopener noreferrer" aria-label="查看知识库：知识库访问人数"><b>762,391</b><span>知识库访问人数</span></a>
         </div>
-        <p class="stats-note">我们是「一站式AI产品经理入门指南」与「从0开始学 AI agent」两个开源知识库的创建者，两个库都是互联网公开的。以上为知识库后台数据，区间 2025/09/11 – 2026/03/09。</p>
+        <p class="stats-note"><a href="https://v11enp9ok1h.feishu.cn/wiki/space/7330809570845048833?ccm_open_type=lark_wiki_spaceLink&amp;open_tab_from=wiki_home" target="_blank" rel="noopener noreferrer">我们是「一站式AI产品经理入门指南」与「从0开始学 AI agent」两个开源知识库的创建者，两个库都是互联网公开的。以上为知识库后台数据，区间 2025/09/11 – 2026/03/09。</a></p>
         <a class="kb-entry" href="https://v11enp9ok1h.feishu.cn/wiki/space/7330809570845048833?ccm_open_type=lark_wiki_spaceLink&amp;open_tab_from=wiki_home" target="_blank" rel="noopener noreferrer" aria-label="进入两光年AI 开源知识库（新窗口打开）">进入开源知识库 <span aria-hidden="true">↗</span></a>
       </div>
       <figure class="fig reveal">
-        <img src="assets/img/02-kb-stats.jpg" alt="两光年AI 开源知识库后台数据截图：访问次数 280万+、单月浏览量 50万+、教程文档 2795 篇" loading="lazy" width="1242" height="1656">
+        <a class="fig-link" href="https://v11enp9ok1h.feishu.cn/wiki/space/7330809570845048833?ccm_open_type=lark_wiki_spaceLink&amp;open_tab_from=wiki_home" target="_blank" rel="noopener noreferrer" aria-label="查看两光年AI 开源知识库后台截图对应页面">
+          <img src="assets/img/02-kb-stats.jpg" alt="两光年AI 开源知识库后台数据截图：访问次数 280万+、单月浏览量 50万+、教程文档 2795 篇" loading="lazy" width="1242" height="1656">
+        </a>
         <figcaption>知识库数据后台 <span>飞书文档 · 数据概览</span></figcaption>
       </figure>
     </div>
