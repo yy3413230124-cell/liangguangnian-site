@@ -38,13 +38,21 @@
   function track(eventType, target) {
     if (navigator.doNotTrack === "1") return;
     var host = window.location.hostname;
-    if (host !== "yzspm.com" && host !== "www.yzspm.com") return;
+    var isFeishuHost =
+      /(^|\.)feishuapp\.com$/.test(host) || /(^|\.)feishu\.link$/.test(host);
+    if (
+      host !== "yzspm.com" &&
+      host !== "www.yzspm.com" &&
+      !isFeishuHost
+    ) {
+      return;
+    }
     try {
       var params = new URLSearchParams({
         eventId: randomId(),
         visitorId: visitorId(),
         eventType: eventType,
-        site: "yzspm",
+        site: isFeishuHost ? "miaoda" : "yzspm",
         page: currentPage(),
         path: window.location.pathname.slice(0, 255),
         referrer: document.referrer.slice(0, 1000),
