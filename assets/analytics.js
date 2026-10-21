@@ -52,7 +52,7 @@
         eventId: randomId(),
         visitorId: visitorId(),
         eventType: eventType,
-        site: isFeishuHost ? "miaoda" : "yzspm",
+        site: isFeishuHost ? "miaoda_html" : "yzspm",
         page: currentPage(),
         path: window.location.pathname.slice(0, 255),
         referrer: document.referrer.slice(0, 1000),
