@@ -32,6 +32,7 @@
 <meta name="msvalidate.01" content="4ABB62000D87D1EF93515A07CE9482FC">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="preload" href="assets/fonts/dingding-subset.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/img/16-jinjieban-poster-hero.webp" as="image" type="image/webp" fetchpriority="high">
 <!-- 站点图标：favicon.ico 放在站点根目录——飞书/微信链接卡片、搜索结果、部分抓取器
      只认 /favicon.ico，不解析 <link rel="icon">；png 和 apple-touch-icon 是给浏览器/iOS 用的。 -->
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -915,9 +916,9 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
          用的是 480×640 的展示尺寸（原图 1242×1656 有 1.66MB，放首屏太重）。 -->
     <figure class="fig hero-poster">
       <a href="wechat.html" aria-label="2 个月 AI 产品经理进阶班 · 加微信咨询">
-        <img src="assets/img/16-jinjieban-poster-hero.png"
+        <img src="assets/img/16-jinjieban-poster-hero.webp"
              alt="2 个月 AI 产品经理进阶班：定方向、建能力、做项目、拿 Offer 四步，用深度实战项目助力优质 offer"
-             width="480" height="640">
+             width="480" height="640" decoding="async" fetchpriority="high">
         <!-- 手机端（≤720）才显示：把整张竖版海报变成「横向推广卡」，缩略图 + 一句利益点 + 入口 -->
         <span class="hp-body">
           <span class="hp-tag">进阶班 · 2 个月</span>
@@ -980,9 +981,9 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
          桌面端这份是隐藏的——桌面在用的是首屏右栏那份（三栏里与路线图等高）。 -->
     <figure class="fig hero-poster hero-poster-mobile">
       <a href="wechat.html" aria-label="2 个月 AI 产品经理进阶班 · 加微信咨询">
-        <img src="assets/img/16-jinjieban-poster-hero.png"
+        <img src="assets/img/16-jinjieban-poster-hero.webp"
              alt="2 个月 AI 产品经理进阶班：定方向、建能力、做项目、拿 Offer 四步，用深度实战项目助力优质 offer"
-             width="480" height="640">
+             width="480" height="640" loading="lazy" decoding="async">
         <span class="hp-body">
           <span class="hp-tag">进阶班 · 2 个月</span>
           <span class="hp-title">用深度实战项目，助力优质 offer</span>
@@ -1005,7 +1006,7 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
       </div>
       <figure class="fig reveal">
         <a class="fig-link" href="https://v11enp9ok1h.feishu.cn/wiki/space/7330809570845048833?ccm_open_type=lark_wiki_spaceLink&amp;open_tab_from=wiki_home" target="_blank" rel="noopener noreferrer" aria-label="查看两光年AI 开源知识库后台截图对应页面">
-          <img src="assets/img/02-kb-stats.jpg" alt="两光年AI 开源知识库后台数据截图：访问次数 280万+、单月浏览量 50万+、教程文档 2795 篇" loading="lazy" width="1242" height="1656">
+          <img src="assets/img/02-kb-stats.webp" srcset="assets/img/02-kb-stats-720.webp 720w, assets/img/02-kb-stats.webp 960w" sizes="(max-width: 720px) calc(100vw - 32px), 680px" alt="两光年AI 开源知识库后台数据截图：访问次数 280万+、单月浏览量 50万+、教程文档 2795 篇" loading="lazy" decoding="async" width="1242" height="1656">
         </a>
         <figcaption>知识库数据后台 <span>飞书文档 · 数据概览</span></figcaption>
       </figure>
@@ -1022,7 +1023,7 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
   </div>
 
   <figure class="fig reveal" style="max-width:760px;margin:44px auto 0">
-    <img src="assets/img/03-curriculum-overview.jpg" alt="两光年AI 课程体系四大板块：AI产品经理系统教学、大厂导师带做AI项目、1v1针对性会议辅导、复盘答疑辅导协作" loading="lazy" width="1242" height="1656">
+    <img src="assets/img/03-curriculum-overview.webp" srcset="assets/img/03-curriculum-overview-720.webp 720w, assets/img/03-curriculum-overview.webp 960w" sizes="(max-width: 720px) calc(100vw - 32px), 680px" alt="两光年AI 课程体系四大板块：AI产品经理系统教学、大厂导师带做AI项目、1v1针对性会议辅导、复盘答疑辅导协作" loading="lazy" decoding="async" width="1242" height="1656">
     <figcaption>课程体系 · 四大板块 <span>系统教学 / 带做项目 / 1v1 辅导 / 闭环服务</span></figcaption>
   </figure>
 
@@ -1140,11 +1141,11 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
 
   <div class="outline-strip">
     <figure class="fig reveal">
-      <img src="assets/img/04-modules-hours.jpg" alt="课程内容与课时：9 个阶段、32 个模块、108 课时" loading="lazy" width="1242" height="1656">
+      <img src="assets/img/04-modules-hours.webp" srcset="assets/img/04-modules-hours-720.webp 720w, assets/img/04-modules-hours.webp 960w" sizes="(max-width: 720px) calc(100vw - 32px), 680px" alt="课程内容与课时：9 个阶段、32 个模块、108 课时" loading="lazy" decoding="async" width="1242" height="1656">
       <figcaption>课程内容与课时 <span>9 阶段 / 32 模块 / 108 课时</span></figcaption>
     </figure>
     <figure class="fig reveal">
-      <img src="assets/img/05-course-outline.jpg" alt="两光年AI产品课程大纲：108 课时 9 阶段完整模块表" loading="lazy" width="1242" height="1656">
+      <img src="assets/img/05-course-outline.webp" srcset="assets/img/05-course-outline-720.webp 720w, assets/img/05-course-outline.webp 960w" sizes="(max-width: 720px) calc(100vw - 32px), 680px" alt="两光年AI产品课程大纲：108 课时 9 阶段完整模块表" loading="lazy" decoding="async" width="1242" height="1656">
       <figcaption>课程大纲 <span>108 课时 / 9 阶段</span></figcaption>
     </figure>
   </div>
@@ -1309,7 +1310,7 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
   <p class="steps-note reveal">第三步和第五步是分水岭。<b>技术方案设计</b>决定你会不会用大模型、RAG、Agent、多模态来解决问题；<b>模型验收与效果评估</b>决定你能不能给出指标、证明方案达到了业务目标。面试官追问的通常是这两段。</p>
 
   <figure class="fig reveal" style="max-width:620px;margin:44px auto 0">
-    <img src="assets/img/06-project-7steps.jpg" alt="深度实战项目七步法：真实业务场景切入、业务需求深度分析、AI技术方案设计、产品方案与PRD输出、模型验收与效果评估、项目复盘与经验沉淀、项目成果赋能求职" loading="lazy" width="1242" height="1656">
+    <img src="assets/img/06-project-7steps.webp" srcset="assets/img/06-project-7steps-720.webp 720w, assets/img/06-project-7steps.webp 960w" sizes="(max-width: 720px) calc(100vw - 32px), 680px" alt="深度实战项目七步法：真实业务场景切入、业务需求深度分析、AI技术方案设计、产品方案与PRD输出、模型验收与效果评估、项目复盘与经验沉淀、项目成果赋能求职" loading="lazy" decoding="async" width="1242" height="1656">
     <figcaption>深度实战项目 · 七步法 <span>从场景切入到成果赋能求职</span></figcaption>
   </figure>
 </section>
@@ -1350,11 +1351,11 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
 
   <div class="fig-row c2 reveal" style="max-width:840px;margin-left:auto;margin-right:auto">
     <figure class="fig">
-      <img src="assets/img/07-coaching.jpg" alt="求职陪跑：简历精修与面试辅导" loading="lazy" width="1242" height="1656">
+      <img src="assets/img/07-coaching.webp" srcset="assets/img/07-coaching-720.webp 720w, assets/img/07-coaching.webp 960w" sizes="(max-width: 720px) calc(100vw - 32px), 680px" alt="求职陪跑：简历精修与面试辅导" loading="lazy" decoding="async" width="1242" height="1656">
       <figcaption>求职陪跑 <span>简历精修 + 面试辅导</span></figcaption>
     </figure>
     <figure class="fig">
-      <img src="assets/img/08-coaching-records.jpg" alt="一对一辅导记录：腾讯会议全程录屏、云端保存、随时回看" loading="lazy" width="1242" height="1656">
+      <img src="assets/img/08-coaching-records.webp" srcset="assets/img/08-coaching-records-720.webp 720w, assets/img/08-coaching-records.webp 960w" sizes="(max-width: 720px) calc(100vw - 32px), 680px" alt="一对一辅导记录：腾讯会议全程录屏、云端保存、随时回看" loading="lazy" decoding="async" width="1242" height="1656">
       <figcaption>一对一辅导记录 <span>腾讯会议 · 录屏云端复盘</span></figcaption>
     </figure>
   </div>
@@ -1371,31 +1372,31 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
   <div class="carousel reveal" data-carousel>
     <div class="carousel-track" tabindex="0" role="group" aria-label="学员真实反馈截图，共 7 张，可左右滑动或使用左右方向键切换">
       <figure class="fig carousel-item">
-        <img src="assets/img/09-feedback-resume.jpg" alt="学员反馈截图：简历精修" loading="lazy" width="1242" height="1656">
+        <img src="assets/img/09-feedback-resume.webp" srcset="assets/img/09-feedback-resume-720.webp 720w, assets/img/09-feedback-resume.webp 960w" sizes="(max-width: 720px) calc(100vw - 32px), 680px" alt="学员反馈截图：简历精修" loading="lazy" decoding="async" width="1242" height="1656">
         <figcaption>简历精修 <span>把所学的大模型知识与公司实际业务关联，重新写出了项目经历</span></figcaption>
       </figure>
       <figure class="fig carousel-item">
-        <img src="assets/img/10-feedback-interview.jpg" alt="学员反馈截图：面试辅导" loading="lazy" width="1242" height="1656">
+        <img src="assets/img/10-feedback-interview.webp" srcset="assets/img/10-feedback-interview-720.webp 720w, assets/img/10-feedback-interview.webp 960w" sizes="(max-width: 720px) calc(100vw - 32px), 680px" alt="学员反馈截图：面试辅导" loading="lazy" decoding="async" width="1242" height="1656">
         <figcaption>面试辅导 <span>面试前一天紧急约辅导，第二天推进到了下一轮</span></figcaption>
       </figure>
       <figure class="fig carousel-item">
-        <img src="assets/img/11-feedback-offer.jpg" alt="学员反馈截图：面试进展到 offer" loading="lazy" width="1242" height="1656">
+        <img src="assets/img/11-feedback-offer.webp" srcset="assets/img/11-feedback-offer-720.webp 720w, assets/img/11-feedback-offer.webp 960w" sizes="(max-width: 720px) calc(100vw - 32px), 680px" alt="学员反馈截图：面试进展到 offer" loading="lazy" decoding="async" width="1242" height="1656">
         <figcaption>面试进展到 offer <span>几轮面试之后拿到 offer，进入下一步选择</span></figcaption>
       </figure>
       <figure class="fig carousel-item">
-        <img src="assets/img/12-feedback-industry.jpg" alt="学员反馈截图：行业选择答疑" loading="lazy" width="1242" height="1656">
+        <img src="assets/img/12-feedback-industry.webp" srcset="assets/img/12-feedback-industry-720.webp 720w, assets/img/12-feedback-industry.webp 960w" sizes="(max-width: 720px) calc(100vw - 32px), 680px" alt="学员反馈截图：行业选择答疑" loading="lazy" decoding="async" width="1242" height="1656">
         <figcaption>行业选择答疑 <span>AI + 教育、搜推策略这类岗位该不该去</span></figcaption>
       </figure>
       <figure class="fig carousel-item">
-        <img src="assets/img/13-feedback-tech.jpg" alt="学员反馈截图：技术问题答疑" loading="lazy" width="1242" height="1656">
+        <img src="assets/img/13-feedback-tech.webp" srcset="assets/img/13-feedback-tech-720.webp 720w, assets/img/13-feedback-tech.webp 960w" sizes="(max-width: 720px) calc(100vw - 32px), 680px" alt="学员反馈截图：技术问题答疑" loading="lazy" decoding="async" width="1242" height="1656">
         <figcaption>技术问题答疑 <span>技术方案里的说法站不站得住</span></figcaption>
       </figure>
       <figure class="fig carousel-item">
-        <img src="assets/img/14-feedback-offer-choice.jpg" alt="学员反馈截图：offer 选择" loading="lazy" width="1242" height="1656">
+        <img src="assets/img/14-feedback-offer-choice.webp" srcset="assets/img/14-feedback-offer-choice-720.webp 720w, assets/img/14-feedback-offer-choice.webp 960w" sizes="(max-width: 720px) calc(100vw - 32px), 680px" alt="学员反馈截图：offer 选择" loading="lazy" decoding="async" width="1242" height="1656">
         <figcaption>offer 选择 <span>拿到 offer 之后的取舍</span></figcaption>
       </figure>
       <figure class="fig carousel-item">
-        <img src="assets/img/15-feedback-salary.jpg" alt="学员反馈截图：薪资与职业选择" loading="lazy" width="1242" height="1656">
+        <img src="assets/img/15-feedback-salary.webp" srcset="assets/img/15-feedback-salary-720.webp 720w, assets/img/15-feedback-salary.webp 960w" sizes="(max-width: 720px) calc(100vw - 32px), 680px" alt="学员反馈截图：薪资与职业选择" loading="lazy" decoding="async" width="1242" height="1656">
         <figcaption>薪资与职业选择 <span>薪资涨幅与 AI 岗的长期价值怎么权衡</span></figcaption>
       </figure>
     </div>
@@ -1460,7 +1461,7 @@ h1,h2,h3,h4,h5,h6,summary{font-weight:400}
       </div>
     </div>
     <figure class="fig cta-poster reveal">
-      <img src="assets/img/01-hero-poster.jpg" alt="2 个月 AI 产品经理进阶班：定方向、建能力、做项目、拿 Offer，用深度实战项目助力优质 offer" loading="lazy" width="1242" height="1656">
+      <img src="assets/img/01-hero-poster.webp" srcset="assets/img/01-hero-poster-720.webp 720w, assets/img/01-hero-poster.webp 960w" sizes="(max-width: 720px) calc(100vw - 32px), 680px" alt="2 个月 AI 产品经理进阶班：定方向、建能力、做项目、拿 Offer，用深度实战项目助力优质 offer" loading="lazy" decoding="async" width="1242" height="1656">
       <figcaption>2 个月 AI 产品经理 · 进阶班 <span>定方向 → 建能力 → 做项目 → 拿 Offer</span></figcaption>
     </figure>
   </div>
