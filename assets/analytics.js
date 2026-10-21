@@ -48,11 +48,17 @@
       return;
     }
     try {
+      var configuredSite = window.LG_ANALYTICS_SITE;
+      var site = configuredSite
+        ? configuredSite
+        : isFeishuHost
+          ? "miaoda_html"
+          : "yzspm";
       var params = new URLSearchParams({
         eventId: randomId(),
         visitorId: visitorId(),
         eventType: eventType,
-        site: isFeishuHost ? "miaoda_html" : "yzspm",
+        site: site,
         page: currentPage(),
         path: window.location.pathname.slice(0, 255),
         referrer: document.referrer.slice(0, 1000),
@@ -83,6 +89,10 @@
       var href = anchor.href || "";
       if (href.indexOf(KNOWLEDGE_MARK) !== -1) {
         track("knowledge_click", href);
+        return;
+      }
+      if (anchor.hasAttribute("data-wx")) {
+        track("consult_click", "/wechat");
         return;
       }
       try {
